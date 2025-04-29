@@ -11,10 +11,11 @@ pipeline {
         DOCKER_IMAGE = 'pinakdhir/wt-ticketing-service'
         DOCKER_TAG = "${BUILD_NUMBER}"
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-    }    stages {
+    }    
+    
+    stages {
         stage('Clone') {
             steps {
-                echo 'Cloning source...'
                 git branch: 'main', url: 'https://github.com/pinakdhirwissen/Server.git'
             }
         }
