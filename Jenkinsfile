@@ -16,41 +16,34 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/pinakdhirwissen/Server.git'
+                git branch: 'main', url: 'https://github.com/pinakdhirwissen/repo'
             }
         }
 
         stage('Build') {
             steps {
-                dir('TicketingSystem') {
                     echo 'Building project with Gradle...'
                     bat 'gradlew clean build -x test'
-                }
             }
         }
 
         stage('Test') {
             steps {
-                dir('TicketingSystem') {
                     echo 'Running unit tests...'
                     bat 'gradlew test'
-                }
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                dir('TicketingSystem') {
                     script {
                         bat 'docker version'
                         bat 'docker info'
                         bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                         bat "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
                     }
-                }
             }        stage('Push to DockerHub') {
             steps {
-                dir('TicketingSystem') {
                     script {
                         withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', 
                                                         usernameVariable: 'DOCKER_USERNAME', 
@@ -61,7 +54,6 @@ pipeline {
                             bat 'docker logout'
                         }
                     }
-                }
             }
         }
     }
