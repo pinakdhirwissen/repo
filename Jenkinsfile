@@ -7,17 +7,16 @@ pipeline {
     }
 
     environment {
-        
+
         DOCKER_IMAGE = 'pinakdhir/wt-ticketing-service'
         DOCKER_TAG = "${BUILD_NUMBER}"
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
     }
 
-    stages {
-        stage('Clone') {
+    stages {        stage('Clone') {
             steps {
                 echo 'Cloning source...'
-                checkout scm
+                git branch: 'main', url: 'https://github.com/pinakdhir/WT-TicketTool.git'
             }
         }
 
