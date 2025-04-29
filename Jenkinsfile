@@ -1,5 +1,12 @@
+#!/usr/bin/env groovy
 pipeline {
     agent any
+
+     options {
+        timestamps()
+        ansiColor('xterm')
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
 
     tools {
         gradle 'Gradle'
@@ -61,6 +68,18 @@ pipeline {
                     }
             }
         }
+        
+        stage('Verify Setup') {
+    steps {
+        script {
+            echo "JDK Version:"
+            bat 'java -version'
+            echo "Gradle Version:"
+            bat 'gradlew -v'
+        }
+    }
+}
+
     
     
     }
