@@ -13,10 +13,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
     }
 
-    stages {        stage('Clone') {
-            steps {
+    stages {        stage('Clone') {            steps {
                 echo 'Cloning source...'
-                git branch: 'main', url: 'https://github.com/pinakdhir/WT-TicketTool.git'
+                git branch: 'main', url: 'https://github.com/pinakdhirwissen/Server.git'
             }
         }
 
