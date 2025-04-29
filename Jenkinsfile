@@ -22,6 +22,23 @@ pipeline {
     
     stages {
 
+        stage('Validate') {
+    steps {
+        script {
+            echo "Workspace: ${WORKSPACE}"
+            echo "Current directory: ${pwd()}"
+            
+            if (!fileExists('build.gradle')) {
+                error 'build.gradle not found. Pipeline cannot continue.'
+            }
+            
+            if (!fileExists('Dockerfile')) {
+                error 'Dockerfile not found. Pipeline cannot continue.'
+            }
+        }
+    }
+}
+
         stage('Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/pinakdhirwissen/repo'
