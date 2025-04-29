@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database Service
+
+  # Spring Backend Service
+  backend:
+    image: pinakdhir/wt-ticketing-service:28042025_02
+    container_name: wt-ticketing-service
+#    env_file:
+#      - .env
+    ports:
+      - "8080:8080"  # Mapping local port 8080 to container's port 8080
+#    environment:
+#      OUTBOUND_EMAIL: ${ENV_OUTBOUND_EMAIL}  # Outbound email
+#      OUTBOUND_PWD: ${ENV_OUTBOUND_PWD}
+      ##      POSTGRES_HOST: db # Use the service name 'db' for Docker Compose networking
+#      POSTGRES_PORT: 5432  # Database port
+#      POSTGRES_DB: wissen-ticketing-system  # Database name
+#      POSTGRES_USER: postgres  # PostgreSQL user
+#      POSTGRES_PWD: postgres  # User password
+#
+#      GOOGLE_CLIENT_ID: 397483461701-sduqqd56peim20j04j7v6u5n123fd8li.apps.googleusercontent.com  # Google OAuth Client ID
+#      GOOGLE_CLIENT_SECRET: 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  # Google OAuth Client Secret
+#
+#      CLOUDINARY_CLOUD_NAME: dooajtnvu  # Cloudinary Cloud Name
+#      CLOUDINARY_API_KEY: 985669459649371  # Cloudinary API Key
+#      CLOUDINARY_API_SECRET: 40zsn0xxdi5Wk1EkGJbOmVaEi1M  # Cloudinary API Secret
+#
+#      ENV_ALLOWED_ORIGIN: http://localhost:5173  # Allowed origin for CORS
+#      # Admin email recipients

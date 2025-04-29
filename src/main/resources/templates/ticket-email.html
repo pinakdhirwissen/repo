@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Notification</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            border-radius: 10px 10px 0 0;
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 25px 20px;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .row {
+            margin-bottom: 12px;
+        }
+        .label {
+            font-weight: 600;
+            color: #111;
+            display: inline-block;
+            width: 140px;
+        }
+        .value {
+            color: #555;
+        }
+        .footer {
+            background: #f0f2f5;
+            text-align: center;
+            padding: 18px 15px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #e0e0e0;
+            border-radius: 0 0 10px 10px;
+        }
+        h2 {
+            margin: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .label {
+                width: 100%;
+                margin-bottom: 4px;
+            }
+            .row {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <h2 th:text="${header}"></h2>
+    </div>
+
+    <div class="content">
+        <div class="row"><span class="label">Ticket ID:</span><span class="value" th:text="${ticketId}"></span></div>
+        <div class="row"><span class="label">Title:</span><span class="value" th:text="${title}"></span></div>
+        <div class="row"><span class="label">Description:</span><span class="value" th:text="${description}"></span></div>
+        <div class="row"><span class="label">Created Date:</span><span class="value" th:text="${createdDate}"></span></div>
+        <div class="row"><span class="label">Priority:</span><span class="value" th:text="${priority}"></span></div>
+        <div class="row"><span class="label">Due Date:</span><span class="value" th:text="${dueDate}"></span></div>
+        <div class="row"><span class="label">Status:</span><span class="value" th:text="${status}"></span></div>
+    </div>
+
+    <div class="footer">
+        Thank you for using our support system.<br>
+        If you have any questions, feel free to contact us.
+    </div>
+</div>
+</body>
+</html>
